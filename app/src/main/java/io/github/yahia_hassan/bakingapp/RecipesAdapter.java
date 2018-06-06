@@ -15,10 +15,16 @@ import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder> {
 
     private Context mContext;
+    private RecipeClickListener mRecipeClickListener;
     private ArrayList<Recipe> mRecipes;
 
-    public RecipesAdapter(Context context) {
+    public RecipesAdapter(Context context, RecipeClickListener recipeClickListener) {
         mContext = context;
+        mRecipeClickListener = recipeClickListener;
+    }
+
+    public interface RecipeClickListener {
+        void onRecipeClickListener(int position);
     }
 
     @NonNull
@@ -47,11 +53,18 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
         notifyDataSetChanged();
     }
 
-    public class RecipesViewHolder extends RecyclerView.ViewHolder {
+    public class RecipesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView recipeTextView;
         public RecipesViewHolder(View itemView) {
             super(itemView);
             recipeTextView = itemView.findViewById(R.id.list_item_text_view);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            mRecipeClickListener.onRecipeClickListener(position);
         }
     }
 }

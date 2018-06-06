@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements RecipesAdapter.RecipeClickListener {
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -34,7 +34,7 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         final RecipesAdapter recipesAdapter = new RecipesAdapter(getContext());
         recyclerView.setAdapter(recipesAdapter);
-        MainFragmentViewModel mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
+        final MainFragmentViewModel mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
         mainFragmentViewModel.getRecipes().observe(this, new Observer<ArrayList<Recipe>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Recipe> recipes) {

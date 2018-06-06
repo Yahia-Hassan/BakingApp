@@ -1,8 +1,11 @@
 package io.github.yahia_hassan.bakingapp.POJO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Parcelable {
     private int mId;
     private String mName;
     private ArrayList<Ingredient> mIngredients;
@@ -15,6 +18,38 @@ public class Recipe {
         mIngredients = ingredients;
         mSteps = steps;
         mServings = servings;
+    }
+
+    protected Recipe(Parcel in) {
+        mId = in.readInt();
+        mName = in.readString();
+        mServings = in.readInt();
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mId);
+        dest.writeString(mName);
+        dest.writeList(mIngredients);
+        dest.writeList(mSteps);
+        dest.writeInt(mServings);
     }
 
     public int getId() {
@@ -56,4 +91,5 @@ public class Recipe {
     public void setServings(int servings) {
         mServings = servings;
     }
+
 }
