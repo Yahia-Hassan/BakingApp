@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import io.github.yahia_hassan.bakingapp.Adapters.RecipesAdapter;
 import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 
 public class MainActivity extends AppCompatActivity implements RecipesAdapter.RecipeClickListener {
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.Re
     @Override
     public void onRecipeClickListener(Recipe recipe) {
         Intent intent = new Intent(this, MasterListActivity.class);
-        intent.putExtra("recipe", recipe);
+        intent.putExtra(MasterListActivity.RECIPE_EXTRA, recipe);
         startActivity(intent);
     }
 }

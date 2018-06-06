@@ -9,6 +9,8 @@ import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 
 public class MasterListActivity extends AppCompatActivity {
 
+    public static final String RECIPE_EXTRA = "recipe_extra";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,12 +18,17 @@ public class MasterListActivity extends AppCompatActivity {
 
         setTitle("Recipe Steps");
         Intent intent  = getIntent();
-        Recipe recipe = intent.getParcelableExtra("recipe");
-        TextView textView = findViewById(R.id.master_list_text_view);
-        textView.setText(recipe.getName());
+        Recipe recipe = intent.getParcelableExtra(RECIPE_EXTRA);
+
         MasterListFragment masterListFragment = new MasterListFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("key", recipe);
+        bundle.putParcelable(MasterListFragment.RECIPE_BUNDLE_EXTRA_KEY, recipe);
         masterListFragment.setArguments(bundle);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.master_list_fragment_container, masterListFragment)
+                .commit();
+
     }
 }

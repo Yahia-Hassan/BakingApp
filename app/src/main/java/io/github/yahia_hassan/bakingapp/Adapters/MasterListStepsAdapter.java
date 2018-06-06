@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp;
+package io.github.yahia_hassan.bakingapp.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,16 +9,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.R;
 
 public class MasterListStepsAdapter extends RecyclerView.Adapter<MasterListStepsAdapter.StepsViewHolder> {
 
     private Context mContext;
+    private StepClickListener mStepClickListener;
     private ArrayList<Step> mStepArrayList;
 
-    public MasterListStepsAdapter(Context context) {
+    public MasterListStepsAdapter(Context context, StepClickListener stepClickListener) {
         mContext = context;
+        mStepClickListener = stepClickListener;
+
+    }
+
+    public interface StepClickListener {
+        void onStepClickListener(ArrayList<Step> stepArrayList, int position);
     }
 
     @NonNull
@@ -45,12 +52,18 @@ public class MasterListStepsAdapter extends RecyclerView.Adapter<MasterListSteps
         notifyDataSetChanged();
     }
 
-    public class StepsViewHolder extends RecyclerView.ViewHolder {
+    public class StepsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView shortDescriptionTextView;
 
         public StepsViewHolder(View itemView) {
             super(itemView);
             shortDescriptionTextView = itemView.findViewById(R.id.steps_list_item_short_description_text_view);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mStepClickListener.onStepClickListener(mStepArrayList, getAdapterPosition());
         }
     }
 }

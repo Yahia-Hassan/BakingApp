@@ -79,7 +79,7 @@ public class JSONUtils {
             JSONArray ingredientsJSONArray = jsonObject.getJSONArray(INGREDIENTS_JSON_ARRAY);
             for (int i = 0; i < ingredientsJSONArray.length(); i++) {
                 JSONObject nthJSONObject = ingredientsJSONArray.getJSONObject(i);
-                int quantity = nthJSONObject.getInt(INGREDIENTS_QUANTITY);
+                double quantity = nthJSONObject.getDouble(INGREDIENTS_QUANTITY);
                 String measure = nthJSONObject.getString(INGREDIENTS_MEASURE);
                 String ingredient = nthJSONObject.getString(INGREDIENTS_INGREDIENT);
                 ingredientObject = new Ingredient(quantity, measure, ingredient);

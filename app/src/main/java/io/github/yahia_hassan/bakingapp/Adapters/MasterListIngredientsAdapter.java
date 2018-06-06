@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp;
+package io.github.yahia_hassan.bakingapp.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import io.github.yahia_hassan.bakingapp.POJO.Ingredient;
+import io.github.yahia_hassan.bakingapp.R;
 
 public class MasterListIngredientsAdapter extends RecyclerView.Adapter<MasterListIngredientsAdapter.IngredientsViewHolder> {
 
@@ -31,7 +32,7 @@ public class MasterListIngredientsAdapter extends RecyclerView.Adapter<MasterLis
     @Override
     public void onBindViewHolder(@NonNull IngredientsViewHolder holder, int position) {
         Ingredient currentIngredient = mIngredientArrayList.get(position);
-        int quantity = currentIngredient.getQuantity();
+        double quantity = currentIngredient.getQuantity();
         String measure = currentIngredient.getMeasure();
         String ingredient = currentIngredient.getIngredient();
 

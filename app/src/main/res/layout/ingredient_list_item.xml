@@ -63,7 +63,7 @@
 
     <TextView
         android:id="@+id/ingredient_list_item_quantity_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
@@ -72,14 +72,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ingredient_list_item_quantity"
-        app:layout_constraintStart_toStartOf="@+id/ingredient_list_item_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/first_guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingredient_list_item_quantity"
-        tools:text="TextView" />
+        tools:text="TextView"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/ingredient_list_item_measure_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
@@ -88,14 +89,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ingredient_list_item_measure"
-        app:layout_constraintStart_toStartOf="@+id/ingredient_list_item_measure"
+        app:layout_constraintEnd_toStartOf="@+id/ingredient_list_item_ingredient_text_view"
+        app:layout_constraintStart_toStartOf="@+id/first_guideline"
         app:layout_constraintTop_toBottomOf="@+id/ingredient_list_item_measure"
-        tools:text="TextView" />
+        tools:text="TextView"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/ingredient_list_item_ingredient_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
@@ -104,8 +106,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ingredient_list_item_ingredient"
-        app:layout_constraintStart_toStartOf="@+id/ingredient_list_item_ingredient"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/second_guideline"
         app:layout_constraintTop_toBottomOf="@+id/ingredient_list_item_ingredient"
         tools:text="TextView" />
 
