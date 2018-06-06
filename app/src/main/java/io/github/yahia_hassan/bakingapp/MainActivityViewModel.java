@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainFragmentViewModel extends ViewModel {
+public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Recipe>> mRecipes;
     private static final String STRING_URL = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
 
