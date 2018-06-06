@@ -32,7 +32,7 @@ public class MainFragment extends Fragment implements RecipesAdapter.RecipeClick
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.main_activity_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        final RecipesAdapter recipesAdapter = new RecipesAdapter(getContext());
+        final RecipesAdapter recipesAdapter = new RecipesAdapter(getContext(), this);
         recyclerView.setAdapter(recipesAdapter);
         final MainFragmentViewModel mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel.class);
         mainFragmentViewModel.getRecipes().observe(this, new Observer<ArrayList<Recipe>>() {
@@ -45,8 +45,13 @@ public class MainFragment extends Fragment implements RecipesAdapter.RecipeClick
         return view;
     }
 
+    @Override
+    public void onRecipeClickListener(Recipe recipe) {
 
-//    @Override
+    }
+
+
+    //    @Override
 //    public void onAttach(Context context) {
 //        super.onAttach(context);
 //        if (context instanceof OnFragmentInteractionListener) {

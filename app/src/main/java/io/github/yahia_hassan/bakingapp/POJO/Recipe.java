@@ -23,6 +23,10 @@ public class Recipe implements Parcelable {
     protected Recipe(Parcel in) {
         mId = in.readInt();
         mName = in.readString();
+        mIngredients = new ArrayList<>();
+        in.readTypedList(mIngredients, Ingredient.CREATOR);
+        mSteps = new ArrayList<>();
+        in.readTypedList(mSteps, Step.CREATOR);
         mServings = in.readInt();
     }
 
@@ -47,8 +51,8 @@ public class Recipe implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(mId);
         dest.writeString(mName);
-        dest.writeList(mIngredients);
-        dest.writeList(mSteps);
+        dest.writeTypedList(mIngredients);
+        dest.writeTypedList(mSteps);
         dest.writeInt(mServings);
     }
 
