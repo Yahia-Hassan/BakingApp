@@ -2,6 +2,7 @@ package io.github.yahia_hassan.bakingapp;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.Re
 
     @Override
     public void onRecipeClickListener(Recipe recipe) {
-
+        Intent intent = new Intent(this, MasterListActivity.class);
+        intent.putExtra("recipe", recipe);
+        startActivity(intent);
     }
 }
