@@ -19,5 +19,9 @@ public class MasterListActivity extends AppCompatActivity {
         Recipe recipe = intent.getParcelableExtra("recipe");
         TextView textView = findViewById(R.id.master_list_text_view);
         textView.setText(recipe.getName());
+        MasterListFragment masterListFragment = new MasterListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("key", recipe);
+        masterListFragment.setArguments(bundle);
     }
 }

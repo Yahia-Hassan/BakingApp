@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">BakingApp</string>
+    <string name="master_list_fragment_ingredients_text_view">Ingredients</string>
+    <string name="master_list_fragment_steps_text_view">Steps</string>
+
+    <string name="ingredient_list_item_quantity">Quantity</string>
+    <string name="ingredient_list_item_measure">Measure</string>
+    <string name="ingredient_list_item_ingredient">Ingredient</string>
 
 </resources>
