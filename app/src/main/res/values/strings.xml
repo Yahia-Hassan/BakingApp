@@ -7,5 +7,7 @@
     <string name="ingredient_list_item_measure">Measure</string>
     <string name="ingredient_list_item_ingredient">Ingredient</string>
     <string name="recipe_steps">Recipe Steps</string>
+    <string name="step_details">Step Details</string>
+
 
 </resources>
