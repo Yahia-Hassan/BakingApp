@@ -16,19 +16,21 @@ public class MasterListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_list);
 
-        setTitle("Recipe Steps");
-        Intent intent  = getIntent();
-        Recipe recipe = intent.getParcelableExtra(RECIPE_EXTRA);
+        if (savedInstanceState == null) {
+            Intent intent  = getIntent();
+            Recipe recipe = intent.getParcelableExtra(RECIPE_EXTRA);
 
-        MasterListFragment masterListFragment = new MasterListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(MasterListFragment.RECIPE_BUNDLE_EXTRA_KEY, recipe);
-        masterListFragment.setArguments(bundle);
+            MasterListFragment masterListFragment = new MasterListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(MasterListFragment.RECIPE_BUNDLE_EXTRA_KEY, recipe);
+            masterListFragment.setArguments(bundle);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.master_list_fragment_container, masterListFragment)
-                .commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.master_list_fragment_container, masterListFragment)
+                    .commit();
+        }
+
 
     }
 }

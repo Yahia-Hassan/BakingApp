@@ -9,6 +9,9 @@
     <string name="recipe_steps">Recipe Steps</string>
     <string name="step_details">Step Details</string>
     <string name="step_thumbnail">Step Thumbnail</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+    <string name="step_array_list_shared_preferences_key">step_array_list_shared_preferences_key</string>
 
 
 </resources>
