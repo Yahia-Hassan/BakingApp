@@ -55,8 +55,8 @@ public class MasterListFragment extends Fragment implements MasterListStepsAdapt
     @Override
     public void onStepClickListener(ArrayList<Step> stepArrayList, int position) {
         Intent intent = new Intent(getContext(), DetailsActivity.class);
-        intent.putParcelableArrayListExtra("steps_list", stepArrayList);
-        intent.putExtra("position", position);
+        intent.putParcelableArrayListExtra(DetailsActivity.STEP_ARRAY_LIST_INTENT, stepArrayList);
+        intent.putExtra(DetailsActivity.POSITION_STEP_ARRAY_LIST_INTENT, position);
         startActivity(intent);
     }
 }
