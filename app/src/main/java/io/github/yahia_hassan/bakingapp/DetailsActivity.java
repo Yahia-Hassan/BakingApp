@@ -33,7 +33,6 @@ public class DetailsActivity extends AppCompatActivity {
         mPreviousButton = findViewById(R.id.activity_details_previous_button);
 
 
-
         Intent intent = getIntent();
         mStepArrayList = intent.getParcelableArrayListExtra(STEP_ARRAY_LIST_INTENT);
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);

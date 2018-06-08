@@ -1,5 +1,6 @@
 package io.github.yahia_hassan.bakingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,9 @@ import io.github.yahia_hassan.bakingapp.POJO.Step;
 public class MasterListFragment extends Fragment implements MasterListStepsAdapter.StepClickListener {
 
     public static final String RECIPE_BUNDLE_EXTRA_KEY = "recipe_bundle_extra_key";
+
+
+    private OnFragmentItemInteractionWhenIsTabletListener mListener;
 
     public MasterListFragment() {
         // Required empty public constructor
@@ -54,9 +58,40 @@ public class MasterListFragment extends Fragment implements MasterListStepsAdapt
 
     @Override
     public void onStepClickListener(ArrayList<Step> stepArrayList, int position) {
-        Intent intent = new Intent(getContext(), DetailsActivity.class);
-        intent.putParcelableArrayListExtra(DetailsActivity.STEP_ARRAY_LIST_INTENT, stepArrayList);
-        intent.putExtra(DetailsActivity.POSITION_STEP_ARRAY_LIST_INTENT, position);
-        startActivity(intent);
+        /*
+        Make new interface here, implement it in the MasterListActivity,
+        if isTablet pass the Step object to the interface's method.
+         */
+        boolean isTablet = getResources().getBoolean(R.bool.is_tablet);
+        if (isTablet) {
+            mListener.onFragmentItemInteractionWhenIsTablet(stepArrayList.get(position));
+        } else {
+            Intent intent = new Intent(getContext(), DetailsActivity.class);
+            intent.putParcelableArrayListExtra(DetailsActivity.STEP_ARRAY_LIST_INTENT, stepArrayList);
+            intent.putExtra(DetailsActivity.POSITION_STEP_ARRAY_LIST_INTENT, position);
+            startActivity(intent);
+        }
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentItemInteractionWhenIsTabletListener) {
+            mListener = (OnFragmentItemInteractionWhenIsTabletListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentItemInteractionWhenIsTabletListener {
+        void onFragmentItemInteractionWhenIsTablet(Step step);
     }
 }
