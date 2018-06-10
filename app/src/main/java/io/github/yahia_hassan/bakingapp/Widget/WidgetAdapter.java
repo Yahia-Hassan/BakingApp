@@ -2,13 +2,9 @@ package io.github.yahia_hassan.bakingapp.Widget;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.icu.util.TimeUnit;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;

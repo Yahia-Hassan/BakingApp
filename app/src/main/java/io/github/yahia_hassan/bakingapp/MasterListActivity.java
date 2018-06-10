@@ -3,7 +3,6 @@ package io.github.yahia_hassan.bakingapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 import io.github.yahia_hassan.bakingapp.POJO.Step;
