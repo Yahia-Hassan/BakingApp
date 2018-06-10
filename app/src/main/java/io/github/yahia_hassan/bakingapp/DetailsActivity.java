@@ -35,17 +35,12 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mStepArrayList = intent.getParcelableArrayListExtra(STEP_ARRAY_LIST_INTENT);
-        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-        mArrayListPosition = sharedPreferences.getInt(getString(R.string.step_array_list_shared_preferences_key), 0);
-        enableAndDisableButtons();
         if (savedInstanceState == null) {
             int position = intent.getIntExtra(POSITION_STEP_ARRAY_LIST_INTENT, 0);
             Bundle bundle = new Bundle();
             bundle.putParcelable(DetailsFragment.PARCELABLE_STEP_ARGUMENT, mStepArrayList.get(position));
 
-            mArrayListPosition = position;
             updatePositionInSharedPreferences(position);
-            enableAndDisableButtons();
             mDetailsFragment = new DetailsFragment();
             mDetailsFragment.setArguments(bundle);
 
@@ -55,6 +50,10 @@ public class DetailsActivity extends AppCompatActivity {
                     .commit();
 
         }
+
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        mArrayListPosition = sharedPreferences.getInt(getString(R.string.step_array_list_shared_preferences_key), 0);
+        enableAndDisableButtons();
 
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override

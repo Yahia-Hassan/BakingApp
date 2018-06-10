@@ -22,12 +22,12 @@ public class MainActivityViewModel extends ViewModel {
     public LiveData<ArrayList<Recipe>> getRecipes() {
         if (mRecipes == null) {
             mRecipes = new MutableLiveData<>();
-            loadUsers();
+            loadRecipes();
         }
         return mRecipes;
     }
 
-    private void loadUsers() {
+    private void loadRecipes() {
         new AsyncTask<Void, Void, ArrayList<Recipe>>() {
             @Override
             protected ArrayList<Recipe> doInBackground(Void... voids) {
