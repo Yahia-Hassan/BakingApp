@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Adapters;
+package io.github.yahia_hassan.bakingapp.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
 import io.github.yahia_hassan.bakingapp.R;
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder> {

@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.pojo.Step;
 
 public class DetailsActivity extends AppCompatActivity {
 

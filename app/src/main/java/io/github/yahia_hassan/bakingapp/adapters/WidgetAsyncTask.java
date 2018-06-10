@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Adapters;
+package io.github.yahia_hassan.bakingapp.adapters;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
-import io.github.yahia_hassan.bakingapp.Utils.JSONUtils;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
+import io.github.yahia_hassan.bakingapp.utils.JSONUtils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

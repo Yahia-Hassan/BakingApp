@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Adapters;
+package io.github.yahia_hassan.bakingapp.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.pojo.Step;
 import io.github.yahia_hassan.bakingapp.R;
 
 public class MasterListStepsAdapter extends RecyclerView.Adapter<MasterListStepsAdapter.StepsViewHolder> {

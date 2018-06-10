@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
-import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
+import io.github.yahia_hassan.bakingapp.pojo.Step;
 
 public class MasterListActivity extends AppCompatActivity implements MasterListFragment.OnFragmentItemInteractionWhenIsTabletListener {
 

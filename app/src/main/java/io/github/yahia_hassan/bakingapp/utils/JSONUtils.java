@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Utils;
+package io.github.yahia_hassan.bakingapp.utils;
 
 import android.util.Log;
 
@@ -8,9 +8,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.POJO.Ingredient;
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
-import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.pojo.Ingredient;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
+import io.github.yahia_hassan.bakingapp.pojo.Step;
 
 public class JSONUtils {
     private static final String TAG = JSONUtils.class.getSimpleName();

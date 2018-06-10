@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.Adapters.MasterListIngredientsAdapter;
-import io.github.yahia_hassan.bakingapp.Adapters.MasterListStepsAdapter;
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
-import io.github.yahia_hassan.bakingapp.POJO.Step;
+import io.github.yahia_hassan.bakingapp.adapters.MasterListIngredientsAdapter;
+import io.github.yahia_hassan.bakingapp.adapters.MasterListStepsAdapter;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
+import io.github.yahia_hassan.bakingapp.pojo.Step;
 
 
 public class MasterListFragment extends Fragment implements MasterListStepsAdapter.StepClickListener {

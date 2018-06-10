@@ -14,8 +14,8 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import io.github.yahia_hassan.bakingapp.Adapters.RecipesAdapter;
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
+import io.github.yahia_hassan.bakingapp.adapters.RecipesAdapter;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
 
 public class MainActivity extends AppCompatActivity implements RecipesAdapter.RecipeClickListener {
 

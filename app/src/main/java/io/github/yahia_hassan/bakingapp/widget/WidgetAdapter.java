@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Widget;
+package io.github.yahia_hassan.bakingapp.widget;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-import io.github.yahia_hassan.bakingapp.Adapters.WidgetAsyncTask;
-import io.github.yahia_hassan.bakingapp.POJO.Ingredient;
-import io.github.yahia_hassan.bakingapp.POJO.Recipe;
+import io.github.yahia_hassan.bakingapp.adapters.WidgetAsyncTask;
+import io.github.yahia_hassan.bakingapp.pojo.Ingredient;
+import io.github.yahia_hassan.bakingapp.pojo.Recipe;
 import io.github.yahia_hassan.bakingapp.R;
 public class WidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 

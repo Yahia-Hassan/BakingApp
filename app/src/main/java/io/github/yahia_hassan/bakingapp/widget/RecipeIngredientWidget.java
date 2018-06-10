@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.Widget;
+package io.github.yahia_hassan.bakingapp.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;

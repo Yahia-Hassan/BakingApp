@@ -1,4 +1,4 @@
-package io.github.yahia_hassan.bakingapp.POJO;
+package io.github.yahia_hassan.bakingapp.pojo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
