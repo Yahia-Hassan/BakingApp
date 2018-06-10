@@ -14,7 +14,8 @@
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/black"
-        tools:text="Quantity"/>
+        tools:text="Quantity"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/widget_measure_text_view"
@@ -24,7 +25,8 @@
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/black"
-        tools:text="Measure"/>
+        tools:text="Measure"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/widget_ingredient_text_view"
@@ -34,6 +36,7 @@
         android:textColor="@android:color/black"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        tools:text="Ingredient"/>
+        tools:text="Ingredient"
+        android:layout_margin="16dp"/>
 
 </LinearLayout>

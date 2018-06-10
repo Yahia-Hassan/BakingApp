@@ -2,6 +2,7 @@ package io.github.yahia_hassan.bakingapp.Widget;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.icu.util.TimeUnit;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -9,18 +10,15 @@ import android.widget.RemoteViewsService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
+import io.github.yahia_hassan.bakingapp.Adapters.WidgetAsyncTask;
 import io.github.yahia_hassan.bakingapp.POJO.Ingredient;
 import io.github.yahia_hassan.bakingapp.POJO.Recipe;
 import io.github.yahia_hassan.bakingapp.R;
-import io.github.yahia_hassan.bakingapp.Utils.JSONUtils;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 public class WidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 
-    private static final String STRING_URL = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
 
     private Context mContext;
     private ArrayList<Ingredient> mIngredientArrayList;
@@ -31,12 +29,20 @@ public class WidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onCreate() {
-        loadIngredients();
     }
 
     @Override
     public void onDataSetChanged() {
-
+        WidgetAsyncTask widgetAsyncTask = new WidgetAsyncTask(mContext);
+        try {
+            ArrayList<Recipe> recipeArrayList = widgetAsyncTask.execute().get(3L, java.util.concurrent.TimeUnit.SECONDS);
+            SharedPreferences sharedPref = mContext.getSharedPreferences(mContext.getString(R.string.recent_recipe_file_key), Context.MODE_PRIVATE);
+            int recentRecipeId = sharedPref.getInt(mContext.getString(R.string.recent_recipe_id), 1);
+            int index = recentRecipeId - 1;
+            mIngredientArrayList = recipeArrayList.get(index).getIngredients();
+        } catch (InterruptedException | TimeoutException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -70,7 +76,7 @@ public class WidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public int getViewTypeCount() {
-        return 4;
+        return 2;
     }
 
     @Override
@@ -83,35 +89,4 @@ public class WidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
         return false;
     }
 
-    private void loadIngredients() {
-        new AsyncTask<Void, Void, ArrayList<Recipe>>() {
-            @Override
-            protected ArrayList<Recipe> doInBackground(Void... voids) {
-                String stringJSON;
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(STRING_URL)
-                        .build();
-                try {
-                    Response response = client.newCall(request).execute();
-                    stringJSON = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    stringJSON = null;
-                }
-                return JSONUtils.getRecipeList(stringJSON);
-            }
-
-            @Override
-            protected void onPostExecute(ArrayList<Recipe> data) {
-                SharedPreferences sharedPref = mContext.getSharedPreferences(mContext.getString(R.string.recent_recipe_file_key), Context.MODE_PRIVATE);
-                int recentRecipeId = sharedPref.getInt(mContext.getString(R.string.recent_recipe_id), 1);
-                int index = recentRecipeId - 1;
-                Log.d("WidgetAdapter", "Index Is " + String.valueOf(index));
-                mIngredientArrayList = data.get(index).getIngredients();
-                Log.d("WidgetAdapter", "Load Finished");
-                Log.d("WidgetAdapter", data.toString());
-            }
-        }.execute();
-    }
 }
