@@ -108,17 +108,24 @@ public class DetailsFragment extends Fragment {
 
     private void releasePlayer() {
         if (mPlayer != null) {
+            mPlayer.release();
+            mPlayer = null;
+        }
+    }
+
+
+    private void saveState() {
+        if (mPlayer != null) {
             playbackPosition = mPlayer.getCurrentPosition();
             currentWindow = mPlayer.getCurrentWindowIndex();
             playWhenReady = mPlayer.getPlayWhenReady();
-            mPlayer.release();
-            mPlayer = null;
         }
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        saveState();
         outState.putInt(CURRENT_WINDOW_INDEX, currentWindow);
         outState.putLong(CURRENT_PLAYBACK_POSITION, playbackPosition);
         outState.putBoolean(PLAY_WHEN_READY, playWhenReady);
