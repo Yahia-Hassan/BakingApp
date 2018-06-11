@@ -5,10 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -17,27 +17,21 @@ import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 
 import io.github.yahia_hassan.bakingapp.pojo.Step;
 
-import static android.view.View.GONE;
 
 
 public class DetailsFragment extends Fragment {
-    TextView mDetailsFragmentTextView;
-    PlayerView mDetailsFragmentPlayerView;
-    SimpleExoPlayer mPlayer;
+    private TextView mDetailsFragmentTextView;
+    private PlayerView mDetailsFragmentPlayerView;
+    private SimpleExoPlayer mPlayer;
+    private ImageView mDetailsFragmentImageView;
     private Step mStep;
 
     private long playbackPosition;
@@ -61,6 +55,7 @@ public class DetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
         mDetailsFragmentPlayerView = view.findViewById(R.id.fragment_details_player_view);
         mDetailsFragmentTextView = view.findViewById(R.id.fragment_details_text_view);
+        mDetailsFragmentImageView = view.findViewById(R.id.fragment_details_image_view);
 
         Bundle bundle = getArguments();
         if (bundle.getParcelable(PARCELABLE_STEP_ARGUMENT) != null) {
@@ -78,16 +73,6 @@ public class DetailsFragment extends Fragment {
         return view;
     }
 
-    private String getInstructionVideoUrl() {
-        String videoUrl = null;
-        if (mStep.getVideoURL().isEmpty() && !mStep.getThumbnailURL().isEmpty()) {
-            videoUrl =  mStep.getThumbnailURL();
-
-        } else if (!mStep.getVideoURL().isEmpty() && mStep.getThumbnailURL().isEmpty()) {
-            videoUrl = mStep.getVideoURL();
-        }
-        return videoUrl;
-    }
 
     private void initializePlayer(String stringUrl) {
         if (mPlayer == null) {
@@ -135,15 +120,35 @@ public class DetailsFragment extends Fragment {
         outState.putBoolean(PLAY_WHEN_READY, playWhenReady);
     }
 
+    private void showVideo() {
+        if (!mStep.getVideoURL().isEmpty() && mStep.getThumbnailURL().isEmpty()) {
+
+            mDetailsFragmentImageView.setVisibility(View.GONE);
+            mDetailsFragmentPlayerView.setVisibility(View.VISIBLE);
+            initializePlayer(mStep.getVideoURL());
+
+        } else if (mStep.getVideoURL().isEmpty() && !mStep.getThumbnailURL().isEmpty()) {
+
+            mDetailsFragmentPlayerView.setVisibility(View.GONE);
+            mDetailsFragmentImageView.setVisibility(View.VISIBLE);
+            Picasso.get()
+                    .load(mStep.getThumbnailURL())
+                    .placeholder(R.drawable.ic_broken_image_black_48dp)
+                    .error(R.drawable.ic_broken_image_black_48dp)
+                    .into(mDetailsFragmentImageView);
+
+        } else {
+            mDetailsFragmentPlayerView.setVisibility(View.GONE);
+            mDetailsFragmentImageView.setVisibility(View.GONE);
+        }
+    }
+
+
     @Override
     public void onStart() {
         super.onStart();
         if (Util.SDK_INT > 23) {
-            if (getInstructionVideoUrl() != null) {
-                initializePlayer(getInstructionVideoUrl());
-            } else {
-                mDetailsFragmentPlayerView.setVisibility(GONE);
-            }
+            showVideo();
         }
     }
 
@@ -151,11 +156,7 @@ public class DetailsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if ((Util.SDK_INT <= 23 || mPlayer == null)) {
-            if (getInstructionVideoUrl() != null) {
-                initializePlayer(getInstructionVideoUrl());
-            } else {
-                mDetailsFragmentPlayerView.setVisibility(GONE);
-            }
+            showVideo();
         }
     }
 

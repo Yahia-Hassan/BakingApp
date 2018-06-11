@@ -12,10 +12,10 @@
     <string name="next_button">Next</string>
     <string name="previous_button">Previous</string>
     <string name="step_array_list_shared_preferences_key">step_array_list_shared_preferences_key</string>
-    <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="recent_recipe_id">recent_recipe_id</string>
     <string name="recent_recipe_file_key">io.github.yahia_hassan.bakingapp_recent_recipe_file_key</string>
+    <string name="step_image_thumbnail">Step Image Thumbnail</string>
 
 
 </resources>
