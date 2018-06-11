@@ -116,6 +116,10 @@ public class DetailsFragment extends Fragment {
 
     private void saveState() {
         if (mPlayer != null) {
+            /*
+            These lines of code will not get called on devices with API 23 or lower as the mPlayer will be null because the
+            last line in releasePlayer() is  mPlayer = null
+             */
             playbackPosition = mPlayer.getCurrentPosition();
             currentWindow = mPlayer.getCurrentWindowIndex();
             playWhenReady = mPlayer.getPlayWhenReady();
@@ -159,6 +163,7 @@ public class DetailsFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if (Util.SDK_INT <= 23) {
+            saveState();
             releasePlayer();
         }
     }
