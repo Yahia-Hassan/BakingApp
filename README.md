@@ -16,6 +16,9 @@ The application supports both phones and tablets with multi-pane layout.
 
 # Libraries Used
 Android Architecture Components
+
 OkHttp
+
 ExoPlayer
+
 Espresso.
