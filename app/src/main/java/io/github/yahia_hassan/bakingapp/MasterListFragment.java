@@ -3,9 +3,9 @@ package io.github.yahia_hassan.bakingapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +38,12 @@ public class MasterListFragment extends Fragment implements MasterListStepsAdapt
 
         RecyclerView ingredientRecyclerView = view.findViewById(R.id.master_list_fragment_ingredients_recycler_view);
         MasterListIngredientsAdapter masterListIngredientsAdapter = new MasterListIngredientsAdapter(getContext());
-        ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         ingredientRecyclerView.setAdapter(masterListIngredientsAdapter);
 
         RecyclerView stepRecyclerView = view.findViewById(R.id.master_list_fragment_steps_recycler_view);
         MasterListStepsAdapter masterListStepsAdapter = new MasterListStepsAdapter(getContext(), this);
-        stepRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        stepRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         stepRecyclerView.setAdapter(masterListStepsAdapter);
 
         Bundle bundle = getArguments();

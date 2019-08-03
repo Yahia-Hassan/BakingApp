@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".MasterListFragment">
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@android:color/black"/>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/master_list_fragment_ingredients_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="@+id/master_list_fragment_ingredients_text_view"
             app:layout_constraintTop_toBottomOf="@+id/master_list_fragment_ingredients_recycler_view" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/master_list_fragment_steps_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +57,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/master_list_fragment_ingredients_recycler_view"
             app:layout_constraintTop_toBottomOf="@+id/master_list_fragment_steps_text_view" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
